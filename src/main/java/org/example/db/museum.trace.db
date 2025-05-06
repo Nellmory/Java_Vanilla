@@ -1,0 +1,20 @@
+2025-04-05 11:44:27.119772+03:00 jdbc[6]: null
+org.h2.message.DbException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:218)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at org.example.db.DatabaseConnection.getConnection(DatabaseConnection.java:22)
+	at org.example.dao.UserDAO.getUsers(UserDAO.java:51)
+	at org.example.dao.UserDAO.printUsers(UserDAO.java:72)
+	at org.example.Main.main(Main.java:13)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Незакрытое приложением соединение уничтожено сборщиком мусора
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 12 more
