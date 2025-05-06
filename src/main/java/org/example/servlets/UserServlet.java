@@ -1,7 +1,6 @@
 package org.example.servlets;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,6 +14,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class UserServlet extends HttpServlet {
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -27,5 +28,19 @@ public class UserServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.print(json);
         out.flush();
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+
+        if (name != null && email != null && !name.isEmpty() && !email.isEmpty()) {
+            UserDAO.addUser(name, email);
+        }
+
+        response.sendRedirect("artworks");
     }
 }

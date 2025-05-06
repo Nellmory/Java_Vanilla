@@ -6,13 +6,13 @@
          version="3.0">
 
   <servlet>
-    <servlet-name>HelloServlet</servlet-name>
+    <servlet-name>MainServlet</servlet-name>
     <servlet-class>org.example.servlets.MainServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>HelloServlet</servlet-name>
-    <url-pattern>/hello</url-pattern>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/</url-pattern>
   </servlet-mapping>
 
   <servlet>
@@ -22,7 +22,27 @@
 
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/users</url-pattern>
+    <url-pattern>/userAction</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ArtworkServlet</servlet-name>
+    <servlet-class>org.example.servlets.ArtworkServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ArtworkServlet</servlet-name>
+    <url-pattern>/artworks</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ArtworkActionServlet</servlet-name>
+    <servlet-class>org.example.servlets.ArtworkActionServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ArtworkActionServlet</servlet-name>
+    <url-pattern>/artworkAction</url-pattern>
   </servlet-mapping>
 
 </web-app>

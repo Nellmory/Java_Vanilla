@@ -9,24 +9,6 @@ import java.util.List;
 
 public class UserDAO {
 
-    // Создание таблицы Users, если её нет
-    public static void createTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS Users (" +
-                "id INT PRIMARY KEY AUTO_INCREMENT," +
-                "name VARCHAR(100)," +
-                "email VARCHAR(100) UNIQUE" +
-            ")";
-
-        try (Connection conn = DatabaseConnection.getConnection();
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-            System.out.println("Таблица Users проверена/создана.");
-        } catch (SQLException e) {
-            System.err.println("Ошибка при создании таблицы Users: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
     // Добавление пользователя
     public static void addUser(String name, String email) {
         String sql = "INSERT INTO Users (name, email) VALUES (?, ?)";
