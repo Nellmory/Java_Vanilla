@@ -1,24 +1,17 @@
 package org.example.servlets;
 
-import org.example.dao.ArtworkDAO;
 import org.example.model.Artwork;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.services.ArtworkService;
 
 import java.io.IOException;
 import java.sql.Date;
 
 public class ArtworkActionServlet extends HttpServlet {
 
-
-    private ArtworkDAO artworkDAO;
-
-    @Override
-    public void init() {
-        artworkDAO = new ArtworkDAO();
-    }
-
+    private final ArtworkService artworkService = ArtworkService.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -31,7 +24,7 @@ public class ArtworkActionServlet extends HttpServlet {
 
         if ("delete".equals(action)) {
             // Удаление
-            artworkDAO.deleteArtwork(id);
+            artworkService.deleteArtwork(id);
         } else {
             // Получаем остальные параметры
             String title = request.getParameter("title");
@@ -44,10 +37,10 @@ public class ArtworkActionServlet extends HttpServlet {
 
             if (id == 0) {
                 // Добавление нового экспоната
-                artworkDAO.insertArtwork(artwork);
+                artworkService.insertArtwork(artwork);
             } else {
                 // Обновление существующего
-                artworkDAO.updateArtwork(artwork);
+                artworkService.updateArtwork(artwork);
             }
         }
 

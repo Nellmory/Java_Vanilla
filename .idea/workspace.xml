@@ -10,27 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48fb9eb5-7694-4811-923f-cb7a803a309a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/ArtworkDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Artwork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/servlets/ArtworkActionServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/servlets/ArtworkServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/init.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/artworks.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/services/ArtworkService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/util/EntityMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/generate_test_data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/ArtworkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/ArtworkDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/DatabaseInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/db/DatabaseInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/museum.mv.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/museum.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servlets/ArtworkActionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servlets/ArtworkActionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servlets/ArtworkServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servlets/ArtworkServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/servlets/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/servlets/UserServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -110,7 +112,7 @@
       <recent name="org.example.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.39">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="DatabaseInitializer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.db.DatabaseInitializer" />
       <module name="Java_Vanilla" />
@@ -257,7 +259,8 @@
       <workItem from="1743439489369" duration="4636000" />
       <workItem from="1743841559385" duration="1875000" />
       <workItem from="1746523162214" duration="16144000" />
-      <workItem from="1746561682905" duration="2839000" />
+      <workItem from="1746561682905" duration="5324000" />
+      <workItem from="1747824366183" duration="2634000" />
     </task>
     <servers />
   </component>

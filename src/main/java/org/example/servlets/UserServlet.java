@@ -5,9 +5,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.example.dao.UserDAO;
 import org.example.model.User;
 import com.google.gson.Gson;
+import org.example.services.UserService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,12 +15,14 @@ import java.util.List;
 
 public class UserServlet extends HttpServlet {
 
+    private final UserService userService = UserService.getInstance();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        List<User> users = UserDAO.getUsers();
+        List<User> users = userService.getUsers();
 
         System.out.println("Пользователи получены: " + users);
         String json = new Gson().toJson(users);
@@ -38,7 +40,7 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         if (name != null && email != null && !name.isEmpty() && !email.isEmpty()) {
-            UserDAO.addUser(name, email);
+            userService.addUser(name, email);
         }
 
         response.sendRedirect("artworks");
