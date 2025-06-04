@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.example.model.User;
 import com.google.gson.Gson;
 import org.example.services.UserService;
+import org.example.services.ArtworkService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,7 @@ import java.util.List;
 public class UserServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
+    private final ArtworkService artworkService = ArtworkService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,6 +45,7 @@ public class UserServlet extends HttpServlet {
             userService.addUser(name, email);
         }
 
-        response.sendRedirect("artworks");
+        // Перенаправляем на сервлет галереи
+        response.sendRedirect("gallery");
     }
 }

@@ -9,24 +9,27 @@ public class Artwork {
     private String artist;
     private Date creationDate;
     private String type;
+    private String imageUrl;
 
     // Конструктор без id (для добавления нового произведения искусства)
-    public Artwork(String title, String description, String artist, Date creationDate, String type) {
+    public Artwork(String title, String description, String artist, Date creationDate, String type, String imageUrl) {
         this.title = title;
         this.description = description;
         this.artist = artist;
         this.creationDate = creationDate;
         this.type = type;
+        this.imageUrl = imageUrl;
     }
 
     // Конструктор с id (для работы с существующими произведениями искусства)
-    public Artwork(int id, String title, String description, String artist, Date creationDate, String type) {
+    public Artwork(int id, String title, String description, String artist, Date creationDate, String type, String imageUrl) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.artist = artist;
         this.creationDate = creationDate;
         this.type = type;
+        this.imageUrl = imageUrl;
     }
 
     // Геттеры и сеттеры
@@ -78,6 +81,14 @@ public class Artwork {
         this.type = type;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     // Метод для удобного вывода
     @Override
     public String toString() {
@@ -88,6 +99,7 @@ public class Artwork {
                 ", artist='" + artist + '\'' +
                 ", creationDate=" + creationDate +
                 ", type='" + type + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

@@ -59,7 +59,7 @@ public class ArtworkDAO {
 
     // Вставить новый экспонат
     public void insertArtwork(Artwork artwork) {
-        String sql = "INSERT INTO artworks (title, description, artist, creation_date, type) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO artworks (title, description, artist, creation_date, type, image_url) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -68,6 +68,7 @@ public class ArtworkDAO {
             stmt.setString(3, artwork.getArtist());
             stmt.setDate(4, new java.sql.Date(artwork.getCreationDate().getTime()));
             stmt.setString(5, artwork.getType());
+            stmt.setString(6, artwork.getImageUrl());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(); // TODO: Replace with proper logging
@@ -76,7 +77,7 @@ public class ArtworkDAO {
 
     // Обновить экспонат
     public void updateArtwork(Artwork artwork) {
-        String sql = "UPDATE artworks SET title = ?, description = ?, artist = ?, creation_date = ?, type = ? WHERE id = ?";
+        String sql = "UPDATE artworks SET title = ?, description = ?, artist = ?, creation_date = ?, type = ?, image_url = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -85,7 +86,8 @@ public class ArtworkDAO {
             stmt.setString(3, artwork.getArtist());
             stmt.setDate(4, new java.sql.Date(artwork.getCreationDate().getTime()));
             stmt.setString(5, artwork.getType());
-            stmt.setInt(6, artwork.getId());
+            stmt.setString(6, artwork.getImageUrl());
+            stmt.setInt(7, artwork.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(); // TODO: Replace with proper logging
@@ -105,7 +107,7 @@ public class ArtworkDAO {
         }
     }
 
-    // Получить количество записей в таблице (Этот метод лучше перенести в другое место)
+    // Получить количество записей в таблице
     public int getArtworksCount() {
         String sql = "SELECT COUNT(*) FROM artworks";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -118,7 +120,7 @@ public class ArtworkDAO {
         } catch (SQLException e) {
             e.printStackTrace(); // TODO: Replace with proper logging
         }
-        return 0; // Or throw an exception if appropriate
+        return 0;
     }
 
     //Метод для преобразования ResultSet в объект Artwork
@@ -129,7 +131,8 @@ public class ArtworkDAO {
                 rs.getString("description"),
                 rs.getString("artist"),
                 rs.getDate("creation_date"),
-                rs.getString("type")
+                rs.getString("type"),
+                rs.getString("image_url")
         );
     }
 

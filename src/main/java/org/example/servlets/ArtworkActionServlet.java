@@ -32,8 +32,9 @@ public class ArtworkActionServlet extends HttpServlet {
             String artist = request.getParameter("artist");
             Date creationDate = Date.valueOf(request.getParameter("creationDate"));
             String type = request.getParameter("type");
+            String imageUrl = request.getParameter("imageUrl");
 
-            Artwork artwork = new Artwork(id, title, description, artist, creationDate, type);
+            Artwork artwork = new Artwork(id, title, description, artist, creationDate, type, imageUrl);
 
             if (id == 0) {
                 // Добавление нового экспоната

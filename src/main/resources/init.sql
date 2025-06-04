@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS Artworks (
     description TEXT,
     artist VARCHAR(255),
     creation_date DATE,
-    type ENUM('painting', 'sculpture', 'other') NOT NULL
+    type ENUM('painting', 'sculpture', 'other') NOT NULL,
+    image_url TEXT
     );
 
 -- Создание таблицы Paintings

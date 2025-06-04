@@ -42,36 +42,43 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 10px;
         }
         input[type="text"], input[type="email"] {
             padding: 10px;
             margin: 5px 0;
-            width: 200px;
+            width: 250px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 1em;
         }
         input[type="submit"] {
-            padding: 10px 20px;
-            font-size: 1em;
+            padding: 12px 25px;
+            font-size: 1.1em;
             background-color: #b37766;
             color: white;
-            border: 1px solid #ccc;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
         }
         input[type="submit"]:hover {
-            background-color: #b37766;
+            background-color: #c48b7a;
         }
     </style>
 </head>
 <body>
 <h1>Онлайн Музей</h1>
 
-<form action="userAction" method="post" >
+<form action="userAction" method="post">
     <input type="text" name="name" placeholder="Ваше имя" required>
     <input type="email" name="email" placeholder="Ваш email" required>
-    <input type="submit" value="Зарегестрироваться">
+    <input type="hidden" name="redirect" value="gallery.jsp">
+    <input type="submit" value="Войти в галерею">
 </form>
 
 </body>

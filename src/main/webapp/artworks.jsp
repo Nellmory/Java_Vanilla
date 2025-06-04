@@ -1,5 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% 
+    if (request.getAttribute("artworks") == null) {
+        response.sendRedirect("artworks");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -63,7 +69,7 @@
             background-color: rgba(179, 119, 102, 0.1);
         }
 
-        input[type="text"], input[type="date"], input[type="number"] {
+        input[type="text"], input[type="date"], input[type="number"], input[type="url"] {
             padding: 12px;
             margin: 8px 0;
             width: 250px;
@@ -75,7 +81,7 @@
             transition: all 0.3s;
         }
 
-        input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus {
+        input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, input[type="url"]:focus {
             outline: none;
             border-bottom-color: #c48b7a;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -107,6 +113,25 @@
             background-color: #7f8c8d;
         }
 
+        .gallery-button {
+            background-color: #b37766;
+        }
+
+        .gallery-button:hover {
+            background-color: #c48b7a;
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .button-container form {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 0;
+        }
+
         form {
             margin-bottom: 30px;
             padding: 25px;
@@ -132,6 +157,7 @@
         <th>Автор</th>
         <th>Дата создания</th>
         <th>Тип</th>
+        <th>URL изображения</th>
         <th>Действия</th>
     </tr>
     </thead>
@@ -144,9 +170,10 @@
             <td>${artwork.artist}</td>
             <td>${artwork.creationDate}</td>
             <td>${artwork.type}</td>
+            <td>${artwork.imageUrl}</td>
             <td>
                 <input type="button" value="Редактировать"
-                       onclick="fillEditForm('${artwork.id}', '${artwork.title}', '${artwork.description}', '${artwork.artist}', '${artwork.creationDate}', '${artwork.type}')"/>
+                       onclick="fillEditForm('${artwork.id}', '${artwork.title}', '${artwork.description}', '${artwork.artist}', '${artwork.creationDate}', '${artwork.type}', '${artwork.imageUrl}')"/>
 
                 <form method="post" action="artworkAction" style="display:inline">
                     <input type="hidden" name="id" value="${artwork.id}"/>
@@ -163,11 +190,12 @@
 <h2>Добавить новый экспонат</h2>
 <form method="post" action="artworkAction">
     <input type="hidden" name="id" value="0"/>
-    Название: <input type="text" name="title"/><br>
-    Описание: <input type="text" name="description"/><br>
-    Автор: <input type="text" name="artist"/><br>
-    Дата создания: <input type="date" name="creationDate"/><br>
-    Тип: <input type="text" name="type"/><br>
+    Название: <input type="text" name="title" required/><br>
+    Описание: <input type="text" name="description" required/><br>
+    Автор: <input type="text" name="artist" required/><br>
+    Дата создания: <input type="date" name="creationDate" required/><br>
+    Тип: <input type="text" name="type" required/><br>
+    URL изображения: <input type="url" name="imageUrl" required/><br>
     <input type="submit" value="Добавить"/>
 </form>
 
@@ -175,27 +203,35 @@
 <h2>Редактировать экспонат</h2>
 <form method="post" action="artworkAction">
     ID: <input type="number" name="id" id="edit-id" readonly/><br>
-    Название: <input type="text" name="title" id="edit-title"/><br>
-    Описание: <input type="text" name="description" id="edit-description"/><br>
-    Автор: <input type="text" name="artist" id="edit-artist"/><br>
-    Дата создания: <input type="date" name="creationDate" id="edit-creationDate"/><br>
-    Тип: <input type="text" name="type" id="edit-type"/><br>
+    Название: <input type="text" name="title" id="edit-title" required/><br>
+    Описание: <input type="text" name="description" id="edit-description" required/><br>
+    Автор: <input type="text" name="artist" id="edit-artist" required/><br>
+    Дата создания: <input type="date" name="creationDate" id="edit-creationDate" required/><br>
+    Тип: <input type="text" name="type" id="edit-type" required/><br>
+    URL изображения: <input type="url" name="imageUrl" id="edit-imageUrl" required/><br>
     <input type="submit" value="Обновить"/>
 </form>
 
-<form action="index.jsp" method="get">
-    <input type="submit" class="back-button" value="Назад на главную">
-</form>
+<div class="button-container">
+    <form action="index.jsp" method="get" style="display: inline-block; margin-right: 10px;">
+        <input type="submit" class="back-button" value="Назад на главную">
+    </form>
+    
+    <form action="gallery.jsp" method="get" style="display: inline-block;">
+        <input type="submit" class="gallery-button" value="Вернуться в галерею">
+    </form>
+</div>
 
 <!-- ===== JavaScript для заполнения формы редактирования ===== -->
 <script>
-    function fillEditForm(id, title, description, artist, creationDate, type) {
+    function fillEditForm(id, title, description, artist, creationDate, type, imageUrl) {
         document.getElementById('edit-id').value = id;
         document.getElementById('edit-title').value = title;
         document.getElementById('edit-description').value = description;
         document.getElementById('edit-artist').value = artist;
         document.getElementById('edit-creationDate').value = creationDate;
         document.getElementById('edit-type').value = type;
+        document.getElementById('edit-imageUrl').value = imageUrl;
         window.scrollTo(0, document.body.scrollHeight);
     }
 </script>
